@@ -1,6 +1,6 @@
 const URL = 'http://localhost:3000/';
 
-let operators = ['+', '-', '*', '/'];
+const operators = ['+', '-', '*', '/', '%']
 
 
 context('Calculator', () => {
@@ -19,21 +19,42 @@ context('Calculator', () => {
       cy.get('#calculator').find('.display').should('have.length', TOTAL_DISPLAYS)
     })
 
+    it('Checks if all number buttons have a value between 0 and 10', () => {
+      cy.get('.numberButton').then((numberButtons) => {
+        numberButtons.each((i, numberButton) => {
+          expect(parseInt(numberButton.value)).to.be.within(0,10)
+        })
+      })
+    })
+
     it('Makes random calculations', () => {
+
       // Press the first random number button
-      cy.contains(selectRandomNumber())
-        .click()
-
-      // Press a random operator button
-      cy.contains(selectRandomOperator())
-        .click()
-
-      // Press the second random number button
-      cy.contains(selectRandomNumber())
+      cy.contains('button', selectRandomNumber())
         .click()
 
       // Press "equal" button
-      cy.contains('=')
+      cy.contains('button', 'Del').should('have.class', 'specialButton')
+        .click()
+
+        // Press the first random number button, again
+      cy.contains('button', selectRandomNumber())
+        .click()
+
+      // Press a random operator button
+      cy.contains('button', selectRandomOperator())
+        .click()
+
+      // Press the second random number button
+      cy.contains('button', selectRandomNumber())
+        .click()
+
+      // Press "=" button
+      cy.contains('button', '=').should('have.class', 'specialButton')
+        .click()
+
+      // Press "C" button
+      cy.contains('button', 'C').should('have.class', 'specialButton')
         .click()
     })
   })
