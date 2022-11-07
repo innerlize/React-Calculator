@@ -67,8 +67,10 @@ export function Calculator(props) {
 	}
 
 	return <section>
-		<CalculatorTitle />
-		<CalculatorOutputScreen question={question} answer={answer} />
-		<CalculatorButtons handleClick={e => handleClick(e)} />
+		<div id='calculator'>
+			<CalculatorTitle />
+			<CalculatorOutputScreen question={question} answer={answer} />
+			<CalculatorButtons handleClick={e => handleClick(e)} />
+		</div>
 	</section>
 }

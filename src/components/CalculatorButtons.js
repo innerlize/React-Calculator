@@ -6,7 +6,7 @@ export function CalculatorButtons({handleClick}) {
 		const operators = ['+', '-', '*', '/', '%']
 
 		const operatorButtons = operators.map((op) => {
-			return <button className='operatorButton' value={op} onClick={e => handleClick(e)}>{op}</button>
+			return <button className='button operatorButton' value={op} onClick={e => handleClick(e)}>{op}</button>
 		})
 
 		return operatorButtons;
@@ -18,7 +18,7 @@ export function CalculatorButtons({handleClick}) {
 		const numbers = [];
 
 		for(let i = 0; i < 10; i++) {
-			numbers.push(<button className='numberButton' value={i} onClick={e => handleClick(e)}>{i}</button>)
+			numbers.push(<button className='button numberButton' value={i} onClick={e => handleClick(e)}>{i}</button>)
 		}
 
 		return numbers;
@@ -30,7 +30,7 @@ export function CalculatorButtons({handleClick}) {
 		const specials = ['=', 'C', 'Del']
 
 		const specialButtons = specials.map((sp) => {
-			return <button className='specialButton' value={sp} onClick={e => handleClick(e)}>{sp}</button>
+			return <button className='button specialButton' value={sp} onClick={e => handleClick(e)}>{sp}</button>
 		})
 
 		return specialButtons;
