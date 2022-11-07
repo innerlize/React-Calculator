@@ -33,7 +33,7 @@ context('Calculator', () => {
       cy.contains('button', selectRandomNumber())
         .click()
 
-      // Press "equal" button
+      // Press "Del" button
       cy.contains('button', 'Del').should('have.class', 'specialButton')
         .click()
 
