@@ -22,7 +22,7 @@ context('Calculator', () => {
     it('Checks if all number buttons have a value between 0 and 10', () => {
       cy.get('.numberButton').then((numberButtons) => {
         numberButtons.each((i, numberButton) => {
-          expect(parseInt(numberButton.value)).to.be.within(0,10)
+          expect(parseInt(numberButton.value)).to.be.within(0, 10)
         })
       })
     })
