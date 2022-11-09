@@ -2,6 +2,6 @@ import React from 'react';
 
 export function CalculatorOutputScreenRow(props) {
 	return <div className='display'>
-		<input type="text" readOnly value={props.value} />
+		<input className={props.className} type="text" readOnly value={props.value} />
 	</div>
 }

@@ -7,11 +7,11 @@ export function CalculatorOutputScreen({question, answer}) {
 		<br />
 		
 		First values:
-		<CalculatorOutputScreenRow value={question} />
+		<CalculatorOutputScreenRow className='firstValue' value={question} />
 
 		<br />
 
 		Result:
-		<CalculatorOutputScreenRow value={answer} />
+		<CalculatorOutputScreenRow className='result' value={answer} />
 	</div>
 }
