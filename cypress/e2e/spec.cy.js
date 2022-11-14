@@ -6,13 +6,13 @@ context('Calculator', () => {
 
 
   describe('Uses the calculator', () => {
-    const TOTAL_BUTTONS = 18;
-    const TOTAL_DISPLAYS = 2;
+    const totalButtons = 18;
+    const totalDisplays = 2;
 
 
     it('Checks if all buttons and displays were loaded', () => {
-      cy.get('#calculator').find('.button').should('have.length', TOTAL_BUTTONS);
-      cy.get('#calculator').find('.display').should('have.length', TOTAL_DISPLAYS);
+      cy.get('#calculator').find('.button').should('have.length', totalButtons);
+      cy.get('#calculator').find('.display').should('have.length', totalDisplays);
     })
 
 
@@ -26,56 +26,56 @@ context('Calculator', () => {
 
 
     it('Makes random calculations', () => {
-      let first_Random_Number = Math.floor(Math.random() * 9);
-      let second_Random_Number = Math.floor(Math.random() * 9);
+      let firstRandomNumber = Math.floor(Math.random() * 9);
+      let secondRandomNumber = Math.floor(Math.random() * 9);
 
       const operators = ['+', '-', '*', '/', '%'];
-      let random_Operator = operators[Math.floor(Math.random() * operators.length)];
+      let randomOperator = operators[Math.floor(Math.random() * operators.length)];
 
 
       describe('Select the first number button', () => {
 
         // Press the first (random) number button
-        cy.contains('button', first_Random_Number)
+        cy.contains('button', firstRandomNumber)
           .click();
 
         // Check if the first number was written in the "First values" input
-        cy.get('.firstValue').should('have.value', first_Random_Number);
+        cy.get('.firstValue').should('have.value', firstRandomNumber);
 
         // Press "Del" button
         cy.contains('button', 'Del').should('have.class', 'specialButton')
           .click();
 
         // Check if the first number was deleted from the "First values" input
-        cy.get('.firstValue').should('not.have.value', first_Random_Number);
+        cy.get('.firstValue').should('not.have.value', firstRandomNumber);
 
         // Press again the first (random) number button
-        cy.contains('button', first_Random_Number)
+        cy.contains('button', firstRandomNumber)
           .click();
 
         // Check again if the first number was written in the "First values" input
-        cy.get('.firstValue').should('have.value', first_Random_Number);
+        cy.get('.firstValue').should('have.value', firstRandomNumber);
       })
 
 
       describe('Select the operator button', () => {
 
         // Press a random operator button
-        cy.contains('button', random_Operator)
+        cy.contains('button', randomOperator)
           .click();
   
         // Check if the operator is on the "First values" input with the first number
-        cy.get('.firstValue').should('have.value', first_Random_Number + random_Operator);
+        cy.get('.firstValue').should('have.value', firstRandomNumber + randomOperator);
       })
 
 
       describe('Select the first number button', () => {
 
         // Press the second random number button
-        cy.contains('button', second_Random_Number)
+        cy.contains('button', secondRandomNumber)
           .click();
   
-        cy.get('.firstValue').should('have.value', first_Random_Number + random_Operator + second_Random_Number);
+        cy.get('.firstValue').should('have.value', firstRandomNumber + randomOperator + secondRandomNumber);
       })
 
 
@@ -84,26 +84,26 @@ context('Calculator', () => {
         // Return a simple calculation with all the currently data...
         function finalResult() {
 
-          switch (random_Operator) {
+          switch (randomOperator) {
 
             case '+':
-              return first_Random_Number + second_Random_Number;
+              return firstRandomNumber + secondRandomNumber;
               break;
 
             case '-':
-              return first_Random_Number - second_Random_Number;
+              return firstRandomNumber - secondRandomNumber;
               break;
 
             case '*':
-              return first_Random_Number * second_Random_Number;
+              return firstRandomNumber * secondRandomNumber;
               break;
 
             case '/':
-              return first_Random_Number / second_Random_Number;
+              return firstRandomNumber / secondRandomNumber;
               break;
 
             case '%':
-              return first_Random_Number % second_Random_Number;
+              return firstRandomNumber % secondRandomNumber;
               break;
 
             default:
