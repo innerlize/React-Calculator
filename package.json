@@ -17,9 +17,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint .",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://$TOKEN@github.com/tiltedveggie/React-Calculator",
+    "format": "prettier --write .",
     "cypress": "cypress open"
   },
   "eslintConfig": {
@@ -39,5 +41,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-testing-library": "^5.9.1",
+    "prettier": "^2.8.0"
   }
 }

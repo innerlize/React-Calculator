@@ -1,17 +1,22 @@
-import React from 'react';
-import { CalculatorOutputScreenRow } from './CalculatorOutputScreenRow.js';
+import React from 'react'
+import { CalculatorOutputScreenRow } from './CalculatorOutputScreenRow.js'
+import PropTypes from 'prop-types'
 
-export function CalculatorOutputScreen({question, answer}) {
-	return <div>
-		<br />
-		<br />
-		
-		First values:
-		<CalculatorOutputScreenRow className='firstValue' value={question} />
+export function CalculatorOutputScreen({ question, answer }) {
+	CalculatorOutputScreen.propTypes = {
+		question,
+		answer: PropTypes.node.isRequired,
+	}
 
-		<br />
-
-		Result:
-		<CalculatorOutputScreenRow className='result' value={answer} />
-	</div>
+	return (
+		<div>
+			<br />
+			<br />
+			First values:
+			<CalculatorOutputScreenRow className='firstValue' value={question} />
+			<br />
+			Result:
+			<CalculatorOutputScreenRow className='result' value={answer} />
+		</div>
+	)
 }

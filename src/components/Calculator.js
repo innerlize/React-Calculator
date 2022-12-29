@@ -1,76 +1,72 @@
-import React, { useState } from 'react';
-import { CalculatorTitle } from './CalculatorTitle.js';
-import { CalculatorOutputScreen } from './CalculatorOutputScreen.js';
-import { CalculatorButtons } from './CalculatorButtons.js';
+import React, { useState } from 'react'
+import { CalculatorTitle } from './CalculatorTitle.js'
+import { CalculatorOutputScreen } from './CalculatorOutputScreen.js'
+import CalculatorButtons from './CalculatorButtons.js'
 
-
-export function Calculator(props) {
-
-	let [question, setQuestion] = useState('');
-	let [answer, setAnswer] = useState('');
+export function Calculator() {
+	let [question, setQuestion] = useState('')
+	let [answer, setAnswer] = useState('')
 
 	function handleClick(e) {
+		let value = e.target.value
 
-		let value = e.target.value;
-
-
-		switch(value) {
+		switch (value) {
 			case '=': {
-
 				if (question !== '') {
-
-					var ans = '';
+					var ans = ''
 
 					try {
 						ans = eval(question)
-					} catch(err) {
-						setAnswer('Math Error');
+					} catch (err) {
+						setAnswer('Math Error')
 					}
 
 					if (answer === undefined) {
-						setAnswer('Math Error');
+						setAnswer('Math Error')
 					} else {
-						setAnswer(ans);
-						setQuestion('');
+						setAnswer(ans)
+						setQuestion('')
 					}
 
-					console.log(ans);
-
-					break;
+					console.log(ans)
 				}
+
+				break
 			}
 
 			case 'C': {
-				setQuestion('');
-				setAnswer('');
+				setQuestion('')
+				setAnswer('')
 
-				break;
+				break
 			}
 
 			case 'Del': {
-				var str = question;
+				var str = question
 
-				str = str.substr(0, str.length - 1);
+				str = str.substr(0, str.length - 1)
 
-				setQuestion(str);
+				setQuestion(str)
 
-				break;
+				break
 			}
 
 			default: {
-				setQuestion( question += value )
-				console.log(question);
+				setQuestion((question += value))
+				console.log(question)
 
-				break;
+				break
 			}
 		}
 	}
 
-	return <section>
-		<div id='calculator'>
-			<CalculatorTitle />
-			<CalculatorOutputScreen question={question} answer={answer} />
-			<CalculatorButtons handleClick={e => handleClick(e)} />
-		</div>
-	</section>
+	return (
+		<section>
+			<div id='calculator'>
+				<CalculatorTitle />
+				<CalculatorOutputScreen question={question} answer={answer} />
+				<CalculatorButtons handleClick={e => handleClick(e)} />
+			</div>
+		</section>
+	)
 }
